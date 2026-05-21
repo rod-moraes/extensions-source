@@ -179,7 +179,7 @@ class MediocreToons :
 
     // ============================= Latest Updates ==========================
     override fun latestUpdatesRequest(page: Int): Request {
-        val url = "$apiUrl/obras/novos".toHttpUrl().newBuilder()
+        val url = "$apiUrl/obras/atualizadas-recentes".toHttpUrl().newBuilder()
             .addQueryParameter("pagina", page.toString())
             .addQueryParameter("limite", "24")
             .addQueryParameter("formato", "5")
