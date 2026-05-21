@@ -160,8 +160,9 @@ fun MediocreMangaDetailsDto.toSManga(): SManga = SManga.create().apply {
     initialized = true
     genre = tags.joinToString { it.name }
 
-    status = when (obStatus) {
-        "em andamento", "ativo", "em_lancamento" -> SManga.ONGOING
+    val normalizedStatus = obStatus.lowercase(Locale.ROOT)
+    status = when (normalizedStatus) {
+        "em andamento", "ativo", "em_lancamento", "em lancamento", "em lançamento" -> SManga.ONGOING
         "completo", "concluído" -> SManga.COMPLETED
         "hiato" -> SManga.ON_HIATUS
         "cancelada" -> SManga.CANCELLED
